@@ -24,9 +24,7 @@ def validate_due_date(due_date):
         raise ValueError("Due date cannot be empty.")
     due_date = due_date.strip()
     try:
-        parsed = datetime.strptime(due_date, "%Y-%m-%d").date()
+        datetime.strptime(due_date, "%Y-%m-%d")
     except ValueError:
         raise ValueError("Due date must be in YYYY-MM-DD format (e.g. 2024-06-26).")
-    if parsed < datetime.today().date():
-        raise ValueError("Due date cannot be in the past.")
     return due_date
